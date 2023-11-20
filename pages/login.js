@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import Link from 'next/link'
 import { useUser } from './UserContext';
+import utilStyles from '../styles/utils.module.css';
 
 
 function Login() {
@@ -35,7 +36,7 @@ function Login() {
   };
 
   return (
-    <div>
+    <div className={utilStyles.container}>
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <input
@@ -58,7 +59,7 @@ function Login() {
           {loading ? 'Loading...' : 'Login'}
         </button>
         <br></br>
-        <Link href="#">Create an account</Link>
+        <Link href="/create-account">Create an account</Link>
       </form>
       {error && <p>{error}</p>}
     </div>

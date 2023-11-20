@@ -34,7 +34,7 @@ async function handleSubmit() {
 
 export default function Home({ allPostsData }) {
   return (
-    <div className={utilStyles.container}>
+    <div>
       <Login />
     </div>
   );
