@@ -1,0 +1,34 @@
+/* components/Navbar.module.css */
+
+.navbar {
+    width: 100%;
+    background-color: #30993e;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem 0;
+    margin-bottom: 20px;
+  }
+  
+  .navlink {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    position: relative; /* Added to position the pseudo-elements */
+  }
+  
+  .navlink:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+  /* Add pseudo-elements for vertical bars
+.navlink:not(:first-child)::before {
+    content: '|';
+    position: absolute;
+    left: 0;
+    color: white;
+    padding-right: 10px;
+  } 
+  */
+  
