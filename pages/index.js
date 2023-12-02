@@ -17,20 +17,20 @@ export async function getStaticProps() {
   };
 }
 
-async function handleSubmit() {
-  const username = document.getElementById('username').value;
-  const password = document.getElementById('password').value;
+// async function handleSubmit() {
+//   const username = document.getElementById('username').value;
+//   const password = document.getElementById('password').value;
 
-  try {
-    const response = await axios.post('http://localhost:8080/api/users/login', {
-      username,
-      password
-    });
-    console.log(response.data);
-  } catch (error) {
-    console.error(error);
-  }
-}
+//   try {
+//     const response = await axios.post('http://localhost:8080/api/users/login', {
+//       username,
+//       password
+//     });
+//     console.log(response.data);
+//   } catch (error) {
+//     console.error(error);
+//   }
+// }
 
 export default function Home({ allPostsData }) {
   return (

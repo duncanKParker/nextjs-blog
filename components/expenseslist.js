@@ -1,14 +1,24 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { useUser } from '../pages/UserContext';
 
-export default function ExpensesList({ expenses }) {
+export default function ExpensesList({ expenses, onAddExpense }) {
 
+    const { user } = useUser();
+    // const [formData, setFormData] = useState({ 
+    //   amount: '1.0',
+    //   description: '',
+    //   userAccount: '1',
+    //   expense_category_id: '1',
+    //   userAccountId: user.userAccountId,
+    //   });
     const [formData, setFormData] = useState({ 
       amount: '1.0',
       description: '',
-      userAccount: '1',
-      expense_category_id: '1',
-      });
+      userAccountId: user.userId, // Create a userAccount object with just the ID
+      categoryId: '1' , // Assuming category works similarly
+      expenseDateTime: new Date().toISOString(),
+    });
     const [loading, setLoading] = useState(false);
 
     const handleChange = (e) => {
@@ -22,8 +32,10 @@ export default function ExpensesList({ expenses }) {
 
       try {
         console.log('Trying to create new expense');
+        console.log('Form Data: ', JSON.stringify(formData));
+        console.log('User: ', user);
         const response = await axios.post('http://localhost:8080/api/expense/create', formData);
-        console.log(response);
+        onAddExpense(response.data);
         setLoading(false);
       } catch (err) {
         setLoading(false);
@@ -45,12 +57,16 @@ export default function ExpensesList({ expenses }) {
         <button type="submit" disabled={loading}>
           {loading ? 'Loading...' : 'Create'}
         </button>
-      </form>
-        <ul>
-          {expenses.map((description, index) => (
-            <li key={index}>{description}</li>
+        </form>
+        <div>
+          {expenses.map((expense, index) => (
+              <div style={{ border: '1px solid black' }} key={index}>
+                  <p>Amount: {expense.amount}</p>
+                  <p>Description: {expense.description}</p>
+                  {/* Render other properties as needed */}
+              </div>
           ))}
-        </ul>
+        </div>
       </div>
     );
   }
