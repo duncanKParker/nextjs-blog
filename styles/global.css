@@ -1,4 +1,8 @@
-html,
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* html,
 body {
   padding: 0;
   margin: 0;
@@ -10,7 +14,7 @@ body {
 
 * {
   box-sizing: border-box;
-}
+} */
 
 /* a {
   color: #0070f3;
@@ -21,7 +25,7 @@ a:hover {
   text-decoration: underline;
 } */
 
-img {
+/* img {
   max-width: 100%;
   display: block;
-}
+} */
